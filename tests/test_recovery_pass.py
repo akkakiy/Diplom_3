@@ -1,7 +1,7 @@
 import allure
 
 
-@allure.suite('Восстановление пароля')
+@allure.suite('Проверки на Восстановление пароля')
 class TestRecoveryPass:
     @allure.title('Проверка кнопки "Восстановить пароль" на странице авторизации')
     def test_recovery_pass(self, driver, main_page):

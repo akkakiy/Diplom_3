@@ -3,7 +3,7 @@ import allure
 from data import Massage
 
 
-@allure.suite('Авторизация пользователя')
+@allure.suite('Проверки на Авторизацию пользователя')
 class TestProfilePage:
     @allure.title('Проверка страницы "Личный кабинет"')
     def test_login(self, driver, profile_page, user, login):

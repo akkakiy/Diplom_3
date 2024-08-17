@@ -5,12 +5,13 @@ from selenium import webdriver
 
 from help import RandomUser
 from page_object.constructor_page import ConstructorPage
+from page_object.feed_order_page import FeedOrderPage
 from page_object.main_page import MainPage
-from profile_page import ProfilePage
+from page_object.profile_page import ProfilePage
 from urls import Urls, Endpoints
 
 
-@pytest.fixture(params=['chrome'])
+@pytest.fixture(params=['chrome', 'firefox'])
 def driver(request):
     if request.param == 'chrome':
         driver = webdriver.Chrome()
@@ -23,7 +24,7 @@ def driver(request):
 
     yield driver
 
-    # driver.quit()
+    driver.quit()
 
 
 @pytest.fixture
@@ -35,13 +36,19 @@ def main_page(driver):
 def profile_page(driver):
     return ProfilePage(driver)
 
+
 @pytest.fixture
 def constructor_page(driver):
     return ConstructorPage(driver)
 
 
 @pytest.fixture
-def user():
+def feed_order_page(driver):
+    return FeedOrderPage(driver)
+
+
+@pytest.fixture
+def user():                                    # фикстура для создания и удаления пользователя
     payload = RandomUser.create_random_user()
     response = requests.post(Endpoints.USER_REGISTER_URL, data=payload)
 
@@ -51,12 +58,10 @@ def user():
     requests.delete(Endpoints.USER_DELETE_URL, headers={"Authorization": f"{token}"})
 
 
-@pytest.fixture
+@pytest.fixture                                # фикстура для авторизации
 def login(user, driver):
     data_user = user[0]
     main_page = MainPage(driver)
     profile_page = ProfilePage(driver)
     main_page.find_and_click_my_account_button()
     profile_page.login_user(data_user["email"], data_user["password"])
-
-

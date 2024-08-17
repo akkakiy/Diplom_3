@@ -5,6 +5,7 @@ from locators.page_locators import HeadersPageLocators, AutorizationPageLocators
 from page_object.base_page import BasePage
 
 
+@allure.step('Методы на страницу восстановления пароля')
 class MainPage(BasePage):
 
     def __init__(self, driver):

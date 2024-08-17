@@ -4,7 +4,7 @@ from locators.page_locators import HeadersPageLocators, MainPageLocators, FeedPa
 from page_object.base_page import BasePage
 
 
-@allure.suite('Конструктор')
+@allure.suite('Методы на Конструктор для бургеров')
 class ConstructorPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
@@ -25,7 +25,7 @@ class ConstructorPage(BasePage):
     def find_bun(self):
         return self.find_element(MainPageLocators.BUN)
 
-    @allure.step('Клик по кнопке "Лента заказов"')
+    @allure.step('Обнаружение и клик по кнопке "Лента заказов"')
     def find_and_click_feed_orders(self):
         return self.find_element(HeadersPageLocators.FEED_ORDER_BUTTON).click()
 

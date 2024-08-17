@@ -40,14 +40,18 @@ class BasePage:
 
     @allure.step('Ожидание появления элемента')
     def wait_for_closing_of_element(self, locator):
-        WebDriverWait(self.driver, 15).until_not(EC.visibility_of_element_located(locator))
+        WebDriverWait(self.driver, 10).until_not(EC.visibility_of_element_located(locator))
+
+    @allure.step('Ожидание смены значения')
+    def wait_to_number(self, locator, value):
+        return WebDriverWait(self.driver, 15).until_not(EC.text_to_be_present_in_element(locator, value))
 
     @allure.step('Скролл на элемент')
     def scroll_to_element(self, locator):
         element = self.driver.find_element(*locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-    @allure.step('Перетаскивание элемента')
+    @allure.step('Перемещение элемента')
     def drag_and_drop(self, element_locator, target_locator):
         element = self.driver.find_element(*element_locator)
         target = self.driver.find_element(*target_locator)

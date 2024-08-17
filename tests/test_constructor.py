@@ -3,7 +3,7 @@ import allure
 from data import Massage
 
 
-@allure.suite('Конструктор')
+@allure.suite('Проверка на функции Конструктора')
 class TestConstructor:
     @allure.title('Проверка кнопки "Конструктор"')
     def test_constructor_button(self, driver, constructor_page):
@@ -17,7 +17,7 @@ class TestConstructor:
         assert constructor_page.find_window_feed_order().is_displayed()
 
 
-@allure.suite('Ингредиенты')
+@allure.suite('Проверки на работу с Ингредиентами')
 class TestIngredients:
     @allure.title('Проверка открытия окна с информацией об ингредиенте "Флюоресцентная булка R2-D3"')
     def test_ingredients_bun(self, driver, constructor_page):
@@ -46,7 +46,7 @@ class TestIngredients:
         assert int(constructor_page.get_ingredient_counter()) > 0
 
 
-@allure.suite('Оформление заказа')
+@allure.suite('Проверка на Оформление заказа')
 class TestPlaceOrderButton:
     @allure.title('Проверка кнопки "Оформить заказ"')
     def test_place_order_button(self, driver, constructor_page, user, login):

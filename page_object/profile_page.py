@@ -4,7 +4,7 @@ from locators.page_locators import HeadersPageLocators, AutorizationPageLocators
 from page_object.base_page import BasePage
 
 
-@allure.suite('Личный кабинет')
+@allure.suite('Методы на Личный кабинет')
 class ProfilePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
@@ -68,6 +68,5 @@ class ProfilePage(BasePage):
     @allure.step('Полные шаги для открытия истории заказов')
     def full_steps_open_history_orders(self):
         self.find_and_click_my_account_button()
-        self.full_steps_login_user()
         self.find_and_click_my_account_button()
         self.find_and_click_history_orders_button()
