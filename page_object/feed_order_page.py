@@ -46,10 +46,6 @@ class FeedOrderPage(BasePage):
     def wait_find_modal_window(self):
         return self.find_element(MainPageLocators.MODAL_WINDOW_CONFIRM)
 
-    # @allure.step('Поиск текста в окне оформления заказа')
-    # def wait_station_text(self):
-    #     return self.find_element(FeedPageLocators.STATION_TEXT_IN_WIN_INFO)
-
     @allure.step('Поиск и клик по кнопке "Личный кабинет" в верхнем меню')
     def find_and_click_button_account(self):
         return self.find_element(HeadersPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
