@@ -11,7 +11,7 @@ from page_object.profile_page import ProfilePage
 from urls import Urls, Endpoints
 
 
-@pytest.fixture(params=['chrome'])
+@pytest.fixture(params=['chrome], [firefox])
 def driver(request):
     if request.param == 'chrome':
         driver = webdriver.Chrome()
