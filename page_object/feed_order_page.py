@@ -9,26 +9,26 @@ class FeedOrderPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    @allure.step('Поиск и клик по кнопке "Лента заказов"')
+    @allure.step('Поиск и клик по кнопке "Лента заказов" в верхнем меню')
     def find_and_click_feed_order_button(self):
         return self.find_element(HeadersPageLocators.FEED_ORDER_BUTTON).click()
 
-    @allure.step('Поиск и клик по окну "Лента заказов"')
-    def find_and_click_window_feed_order(self):
+    @allure.step('Поиск заказа в ленте')
+    def find_order_in_feed_order(self):
         return self.find_element(FeedPageLocators.WINDOW_FEED_ORDER).click()
 
     @allure.step('Поиск окна с информацией о заказе')
     def find_window_info_order(self):
         return self.find_element(FeedPageLocators.WINDOW_INFO_ORDER_IN_WORK)
 
-    @allure.step('Поиск информации о номере заказа')
+    @allure.step('Поиск информации с номером заказа')
     def find_text_compound(self):
         return self.find_element(FeedPageLocators.NUMBER_ORDER)
 
     @allure.step('Полные шаги для открытия окна с информацией о заказе')
     def full_steps_open_order_window_info(self):
         self.find_and_click_feed_order_button()
-        self.find_and_click_window_feed_order()
+        self.find_order_in_feed_order()
 
     @allure.step('Поиск ингредиента "Флюоресцентная булка R2-D3"')
     def find_bun(self):
@@ -42,25 +42,19 @@ class FeedOrderPage(BasePage):
     def find_and_click_button_place_order(self):
         return self.find_element(MainPageLocators.BUTTON_PLACE_ORDER).click()
 
-    @allure.step('Полные шаги для оформления заказа')
-    def full_find_and_transfer_ingredient_bun(self):
-        self.find_bun()
-        self.transfer_ingredient_bun()
-        self.find_and_click_button_place_order()
-
     @allure.step('Поиск окна подтверждения принятия заказа')
     def wait_find_modal_window(self):
         return self.find_element(MainPageLocators.MODAL_WINDOW_CONFIRM)
 
-    @allure.step('Поиск текста в окне оформления заказа')
-    def wait_station_text(self):
-        return self.find_element(FeedPageLocators.STATION_TEXT_IN_WIN_INFO)
+    # @allure.step('Поиск текста в окне оформления заказа')
+    # def wait_station_text(self):
+    #     return self.find_element(FeedPageLocators.STATION_TEXT_IN_WIN_INFO)
 
-    @allure.step('Поиск и клик по кнопке "Личный кабинет"')
+    @allure.step('Поиск и клик по кнопке "Личный кабинет" в верхнем меню')
     def find_and_click_button_account(self):
         return self.find_element(HeadersPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
 
-    @allure.step('Поиск и клик по кнопке "История заказов"')
+    @allure.step('Поиск и клик по кнопке "История заказов" в личном кабинете')
     def find_and_click_button_history_order(self):
         return self.find_element(AccountPageLocators. HISTORY_BUTTON).click()
 
@@ -80,24 +74,20 @@ class FeedOrderPage(BasePage):
     def find_and_click_constructor_button(self):
         return self.find_element(HeadersPageLocators.CONSTRUCTOR_BUTTON).click()
 
-    @allure.step('Поиск кнопки "Булки"')
-    def find_bun_button(self):
-        return self.find_element(MainPageLocators.BUTTON_BUNS)
-
     @allure.step('Поиск количества заказов за день')
     def get_text_done_daily(self):
         return self.get_text(FeedPageLocators.DAILY_ORDER)
 
-    @allure.step('Поиск информации о номере заказа в модальном окне')
+    @allure.step('Получаем номер заказа в модальном окне')
     def get_number_order_modal_window(self):
         self.wait_to_number(FeedPageLocators.NUMBER_ORDER_IN_MODAL_WINDOW, "9999")
         return self.get_text(FeedPageLocators.NUMBER_ORDER_IN_MODAL_WINDOW)
 
-    @allure.step('Поиск кнопки "Выход"')
+    @allure.step('Поиск кнопки "Выход" в модальном окне')
     def find_exit(self):
         return self.find_element(FeedPageLocators.EXIT_BUTTON)
 
-    @allure.step('Клик по кнопке "Выход"')
+    @allure.step('Клик по кнопке "Выход" в модальном окне')
     def click_exit(self):
         return self.click_element(FeedPageLocators.EXIT_BUTTON)
 

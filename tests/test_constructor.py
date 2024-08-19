@@ -7,7 +7,8 @@ from data import Massage
 class TestConstructor:
     @allure.title('Проверка кнопки "Конструктор"')
     def test_constructor_button(self, driver, constructor_page):
-        constructor_page.full_check_constructor_page()
+        constructor_page.find_and_click_account_button()
+        constructor_page.find_and_click_constructor_button()
         assert (constructor_page.find_burger_panel().is_displayed()
                 and constructor_page.find_bun().is_displayed())
 
@@ -21,23 +22,26 @@ class TestConstructor:
 class TestIngredients:
     @allure.title('Проверка открытия окна с информацией об ингредиенте "Флюоресцентная булка R2-D3"')
     def test_ingredients_bun(self, driver, constructor_page):
-        constructor_page.full_check_open_window_info_bun()
-        assert constructor_page.find_and_check_window_info().is_displayed()
+        constructor_page.find_and_button_buns()
+        constructor_page.find_and_click_bun()
         constructor_page.find_and_click_modal_close_button()
+        assert constructor_page.find_and_check_window_info().is_displayed()
         assert constructor_page.find_burger_panel().is_displayed()
 
     @allure.title('Проверка открытия окна с информацией об ингредиенте "Соус Spicy"')
     def test_ingredients_sauce(self, driver, constructor_page):
-        constructor_page.full_steps_open_window_info_sauce()
-        assert constructor_page.find_and_check_window_info().is_displayed()
+        constructor_page.find_and_click_buttons_sauces()
+        constructor_page.find_and_click_sauce()
         constructor_page.find_and_click_modal_close_button()
+        assert constructor_page.find_and_check_window_info().is_displayed()
         assert constructor_page.find_burger_panel().is_displayed()
 
     @allure.title('Проверка открытия окна с информацией об ингредиенте "Говяжий метеорит (отбивная)"')
     def test_ingredients_filling(self, driver, constructor_page):
-        constructor_page.full_steps_open_window_info_filling()
-        assert constructor_page.find_and_check_window_info().is_displayed()
+        constructor_page.find_and_click_buttons_sauces()
+        constructor_page.find_and_click_sauce()
         constructor_page.find_and_click_modal_close_button()
+        assert constructor_page.find_and_check_window_info().is_displayed()
         assert constructor_page.find_burger_panel().is_displayed()
 
     @allure.title('Проверка счетчика ингредиентов')

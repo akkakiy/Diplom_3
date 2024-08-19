@@ -11,10 +11,11 @@ class TestFeedOrder:
 
     @allure.title('Проверка поиска номера заказа в Ленте заказов')
     def test_find_number_order_in_feed_orders(self, driver, feed_order_page, user, login):
-        feed_order_page.full_find_and_transfer_ingredient_bun()
+        feed_order_page.find_bun()
+        feed_order_page.transfer_ingredient_bun()
+        feed_order_page.find_and_click_button_place_order()
         feed_order_page.wait_find_modal_window()
-        feed_order_page.wait_station_text()
-        feed_order_page.find_exit()                             # по непонятным причинам закрыть модальное окно,
+        feed_order_page.find_exit()                             # по непонятным причинам, закрыть модальное окно,
         feed_order_page.get_number_order_modal_window()         # в этом тесте и ниже,
         feed_order_page.click_exit()                            # удалось только таким образом
         feed_order_page.find_and_click_button_account()
@@ -27,7 +28,6 @@ class TestFeedOrder:
         feed_order_page.find_and_click_feed_order_button()
         all_time_before = feed_order_page.get_text_done_all_time()
         feed_order_page.find_and_click_constructor_button()
-        feed_order_page.find_bun_button()
         feed_order_page.find_bun()
         feed_order_page.transfer_ingredient_bun()
         feed_order_page.find_and_click_button_place_order()
@@ -44,7 +44,6 @@ class TestFeedOrder:
         feed_order_page.find_and_click_feed_order_button()
         daily_before = feed_order_page.get_text_done_daily()
         feed_order_page.find_and_click_constructor_button()
-        feed_order_page.find_bun_button()
         feed_order_page.find_bun()
         feed_order_page.transfer_ingredient_bun()
         feed_order_page.find_and_click_button_place_order()
@@ -60,7 +59,6 @@ class TestFeedOrder:
     def test_order_in_works(self, driver, feed_order_page, user, login):
         feed_order_page.find_and_click_feed_order_button()
         feed_order_page.find_and_click_constructor_button()
-        feed_order_page.find_bun_button()
         feed_order_page.find_bun()
         feed_order_page.transfer_ingredient_bun()
         feed_order_page.find_and_click_button_place_order()

@@ -11,27 +11,27 @@ class MainPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    @allure.step('Поиск и клик по кнопки "Личный кабинет"')
+    @allure.step('Поиск и клик по кнопки "Личный кабинет" в верхнем меню')
     def find_and_click_my_account_button(self):
         return self.find_element(HeadersPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
 
-    @allure.step('Поиск и клик по ссылке "Восстановить пароль"')
+    @allure.step('Поиск и клик по ссылке "Восстановить пароль" на странице авторизации')
     def find_and_click_forgot_password_button(self):
         self.find_element(AutorizationPageLocators.LINK_RECOVERY).click()
 
-    @allure.step('Проверка сообщения "Восстановление пароля"')
+    @allure.step('Проверка наличия текста "Восстановление пароля"')
     def find_and_check_recovery_text(self):
         return self.find_element(RecoveryPageLocators.BUTTON_RECOVERY)
 
-    @allure.step('Поиск поля email')
+    @allure.step('Поиск поля email на странице восстановления пароля')
     def find_email_field(self):
         return self.find_element(RecoveryPageLocators.FIELD_EMAIL_RECOVERY)
 
-    @allure.step('Ввод в поле email')
+    @allure.step('Ввод в поле email для восстановления пароля')
     def input_email_for_recovery(self):
         self.find_email_field().send_keys(RandomUser.create_random_user()['email'])
 
-    @allure.step('Поиск и клик по кнопке "Восстановить пароль"')
+    @allure.step('Поиск и клик по кнопке "Восстановить" на странице восстановления пароля')
     def find_and_click_recovery_button(self):
         return self.find_element(RecoveryPageLocators.BUTTON_RECOVERY).click()
 
@@ -50,30 +50,3 @@ class MainPage(BasePage):
     @allure.step('Проверка активности поля нового пароля')
     def check_field_activ_new_password(self):
         return self.find_element(RecoveryPageLocators.FIELD_ACTIVE)
-
-    @allure.step('Шаги для проверки кнопки "Восстановление пароля"')
-    def full_steps_recovery(self):
-        self.find_and_click_my_account_button()
-        self.find_and_click_forgot_password_button()
-        self.find_and_check_recovery_text()
-
-    @allure.step('Шаги для проверки перехода на страницу "Восстановления пароля"')
-    def full_steps_recovery_pass_page(self):
-        self.find_and_click_my_account_button()
-        self.find_and_click_forgot_password_button()
-        self.find_email_field()
-        self.input_email_for_recovery()
-        self.find_and_click_recovery_button()
-        self.find_field_new_password()
-
-    @allure.step('Шаги для проверки ввода нового пароля')
-    def full_steps_check_input_new_password(self):
-        self.find_and_click_my_account_button()
-        self.find_and_click_forgot_password_button()
-        self.find_email_field()
-        self.input_email_for_recovery()
-        self.find_and_click_recovery_button()
-        self.find_field_new_password()
-        self.input_new_password()
-        self.find_and_click_view_new_password()
-        self.check_field_activ_new_password()

@@ -16,15 +16,15 @@ class BasePage:
 
     @allure.step('Проверка URL')
     def check_url(self, url):
-        return WebDriverWait(self.driver, 10).until(EC.url_to_be(url))
+        return WebDriverWait(self.driver, 15).until(EC.url_to_be(url))
 
     @allure.step('Поиск элемента')
     def find_element(self, locator):
-        return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
+        return WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(locator))
 
     @allure.step('Клик по элементу')
     def click_element(self, locator):
-        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator)).click()
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(locator)).click()
 
     @allure.step('Ввод текста в поле')
     def input_text_in_field(self, locator, text):
@@ -40,7 +40,7 @@ class BasePage:
 
     @allure.step('Ожидание появления элемента')
     def wait_for_closing_of_element(self, locator):
-        WebDriverWait(self.driver, 10).until_not(EC.visibility_of_element_located(locator))
+        WebDriverWait(self.driver, 15).until_not(EC.visibility_of_element_located(locator))
 
     @allure.step('Ожидание смены значения')
     def wait_to_number(self, locator, value):

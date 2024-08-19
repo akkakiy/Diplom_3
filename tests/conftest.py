@@ -17,13 +17,9 @@ def driver(request):
         driver = webdriver.Chrome()
     else:
         driver = webdriver.Firefox()
-
     driver.set_window_size(1920, 1080)
-
     driver.get(Urls.MAIN_URLS)
-
     yield driver
-
     driver.quit()
 
 
@@ -51,9 +47,7 @@ def feed_order_page(driver):
 def user():                                    # фикстура для создания и удаления пользователя
     payload = RandomUser.create_random_user()
     response = requests.post(Endpoints.USER_REGISTER_URL, data=payload)
-
     yield payload, response
-
     token = response.json()["accessToken"]
     requests.delete(Endpoints.USER_DELETE_URL, headers={"Authorization": f"{token}"})
 

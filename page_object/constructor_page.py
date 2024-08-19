@@ -9,15 +9,15 @@ class ConstructorPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    @allure.step('Клик по кнопке "Личный кабинет"')
+    @allure.step('Клик по кнопке "Личный кабинет" в верхнем меню')
     def find_and_click_account_button(self):
         return self.find_element(HeadersPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
 
-    @allure.step('Клик по кнопке "Конструктор"')
+    @allure.step('Клик по кнопке "Конструктор" в верхнем меню')
     def find_and_click_constructor_button(self):
         return self.find_element(HeadersPageLocators.CONSTRUCTOR_BUTTON).click()
 
-    @allure.step('Поиск элемента панель конструктора')
+    @allure.step('Поиск элемента панель конструктора на главной странице')
     def find_burger_panel(self):
         return self.find_element(MainPageLocators.BURGER_PANEL)
 
@@ -25,7 +25,7 @@ class ConstructorPage(BasePage):
     def find_bun(self):
         return self.find_element(MainPageLocators.BUN)
 
-    @allure.step('Обнаружение и клик по кнопке "Лента заказов"')
+    @allure.step('Поиск и клик по кнопке "Лента заказов" в верхнем меню')
     def find_and_click_feed_orders(self):
         return self.find_element(HeadersPageLocators.FEED_ORDER_BUTTON).click()
 
@@ -33,11 +33,11 @@ class ConstructorPage(BasePage):
     def find_window_feed_order(self):
         return self.find_element(FeedPageLocators. WINDOW_FEED_ORDER)
 
-    @allure.step('Поиск кнопки "Булки"')
+    @allure.step('Поиск кнопки "Булки" в конструкторе')
     def find_and_button_buns(self):
         return self.find_element(MainPageLocators.BUTTON_BUNS)
 
-    @allure.step('Клик по ингредиенту "Флюоресцентная булка R2-D3"')
+    @allure.step('Клик по ингредиенту "Флюоресцентная булка R2-D3" в конструкторе')
     def find_and_click_bun(self):
         return self.find_element(MainPageLocators.BUN).click()
 
@@ -49,19 +49,19 @@ class ConstructorPage(BasePage):
     def find_and_click_modal_close_button(self):
         return self.find_element(MainPageLocators.MODAL_CLOSE_BUTTON).click()
 
-    @allure.step('Поиск и нажатие кнопки "Соусы"')
+    @allure.step('Поиск и нажатие кнопки "Соусы" в конструкторе')
     def find_and_click_buttons_sauces(self):
         return self.find_element(MainPageLocators.BUTTON_SAUCES).click()
 
-    @allure.step('Поиск и нажатие ингредиента "Соус Spicy-X"')
+    @allure.step('Поиск и нажатие ингредиента "Соус Spicy-X" в конструкторе')
     def find_and_click_sauce(self):
         return self.find_element(MainPageLocators.SAUCE).click()
 
-    @allure.step('Поиск и нажатие кнопки "Начинки"')
+    @allure.step('Поиск и нажатие кнопки "Начинки" в конструкторе')
     def find_and_click_buttons_sauces(self):
         return self.find_element(MainPageLocators.BUTTON_FILLINGS).click()
 
-    @allure.step('Поиск и нажатие ингредиента "Говяжий метеорит (отбивная)"')
+    @allure.step('Поиск и нажатие ингредиента "Говяжий метеорит (отбивная)" в конструкторе')
     def find_and_click_sauce(self):
         return self.find_element(MainPageLocators.FILLING).click()
 
@@ -84,25 +84,3 @@ class ConstructorPage(BasePage):
     @allure.step('Поиск текста в окне с подтверждением оформления заказа')
     def find_text_order_confirm(self):
         return self.get_text(MainPageLocators.TEXT_ORDER_CONFIRM)
-
-    @allure.step('Полная проверка кнопки "Конструктор"')
-    def full_check_constructor_page(self):
-        self.find_and_click_account_button()
-        self.find_and_click_constructor_button()
-        self.find_burger_panel()
-        self.find_bun()
-
-    @allure.step('Шаги по поиску кнопки "Булки" и нажатие на ингредиент "Флюоресцентная булка R2-D3"')
-    def full_check_open_window_info_bun(self):
-        self.find_and_button_buns()
-        self.find_and_click_bun()
-
-    @allure.step('Шаги по поиску кнопки "Соусы" и нажатие на ингредиент "Соус Spicy-X"')
-    def full_steps_open_window_info_sauce(self):
-        self.find_and_click_buttons_sauces()
-        self.find_and_click_sauce()
-
-    @allure.step('Шаги по поиску кнопки "Начинки" и нажатие на ингредиент "Говяжий метеорит (отбивная)"')
-    def full_steps_open_window_info_filling(self):
-        self.find_and_click_buttons_sauces()
-        self.find_and_click_sauce()
