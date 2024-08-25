@@ -15,9 +15,9 @@ class TestFeedOrder:
         feed_order_page.transfer_ingredient_bun()
         feed_order_page.find_and_click_button_place_order()
         feed_order_page.wait_find_modal_window()
-        feed_order_page.find_exit()                             # по непонятным причинам, закрыть модальное окно,
-        feed_order_page.get_number_order_modal_window()         # в этом тесте и ниже,
-        feed_order_page.click_exit()                            # удалось только таким образом
+        feed_order_page.find_exit()                             
+        feed_order_page.get_number_order_modal_window()         
+        feed_order_page.click_exit()                            
         feed_order_page.find_and_click_button_account()
         feed_order_page.find_and_click_button_history_order()
         number_order = feed_order_page.get_number_order_in_history_orders()
